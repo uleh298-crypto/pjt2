@@ -1,0 +1,5 @@
+# Copy this file to local.properties and fill in local-only values.
+# Android Studio usually manages sdk.dir automatically.
+
+# sdk.dir=C\:\\Users\\YOUR_USER\\AppData\\Local\\Android\\Sdk
+KAKAO_NATIVE_APP_KEY=TODO_ADD_KAKAO_NATIVE_APP_KEY

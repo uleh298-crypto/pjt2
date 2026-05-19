@@ -1,0 +1,148 @@
+# General
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+logs/
+
+# Environment Variables / Secrets
+.env
+.env.*
+!.env.example
+**/local.properties
+**/firebase-service-account.json
+**/google-services.json
+**/GoogleService-Info.plist
+**/ssafy_members_data.csv
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+*.mobileprovision
+*.cer
+*.p8
+
+# Local Uploads
+uploads/
+
+# Database dumps / generated datasets
+exec/*dump*.sql
+exec/whatsyouretf_dump.sql
+docs/sql/init/*dump*.sql
+docs/sql/init/remote_*.sql
+docs/sql/init/other_composition.sql
+docs/sql/krx_etf_list.txt
+docs/sql/data/
+backend/data-service/data/crawled/
+*.csv
+*.tsv
+*.dump
+*.backup
+*.sql.gz
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.xlsx
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# IDE - Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+# IDE - VS Code
+.vscode/
+!.vscode/extensions.json
+
+# Application
+application-local.yml
+application-local.properties
+application-secret.yml
+application-secret.properties
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+*.egg-info/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Test
+/test-output/
+
+# Claude
+claude.md
+CLAUDE.md
+AGENTS.md
+.claude/
+
+# Android
+android-for-migrations/
+android/.gradle/
+android/**/.gradle/
+android/**/.kotlin/
+android/**/release/
+**/keystore/
+*.apk
+*.aab
+*.apks
+
+# Node/Frontend
+node_modules/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/build/
+frontend/.turbo/
+
+# Sample
+sample/

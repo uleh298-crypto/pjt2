@@ -1,0 +1,167 @@
+spring:
+  application:
+    name: user-service
+  config:
+    import: optional:file:.env[.properties]
+
+  # Database
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:whatsyouretf}?options=-c%20timezone=Asia/Seoul
+    username: ${DB_USERNAME:wye}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Seoul
+    show-sql: ${SHOW_SQL:true}
+    open-in-view: false
+
+  # Redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      repositories:
+        enabled: false
+    web:
+      pageable:
+        default-page-size: 20
+
+  # Mail (Gmail SMTP)
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  # Thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+
+  # OAuth2
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            redirect-uri: http://localhost:8080/api/v1/auth/oauth/kakao/callback
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_post
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+# Server
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+
+# JWT
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-validity: 21600000   # 6 hours
+  refresh-token-validity: 604800000 # 7 days
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.whatsyouretf: DEBUG
+    org.springframework.security: DEBUG
+
+# Swagger
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# App Config
+app:
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
+  frontend:
+    url: ${FRONTEND_URL:http://localhost:3000}
+  logo:
+    base-url: ${LOGO_BASE_URL:http://localhost:8080/uploads/logos}
+
+# GMS (Gen AI Management System) - SSAFY LLM API (Anthropic Proxy)
+gms:
+  api:
+    base-url: ${GMS_API_URL:}
+    key: ${GMS_API_KEY:}
+  model:
+    name: claude-sonnet-4-20250514
+    max-tokens: 4096
+
+# Anthropic API (직접 호출 - GMS 대신 사용)
+anthropic:
+  api:
+    base-url: https://api.anthropic.com
+    key: ${ANTHROPIC_API_KEY:}
+  model:
+    name: claude-3-haiku-20240307
+    max-tokens: 4096
+
+# OpenAI API (직접 호출)
+openai:
+  api:
+    base-url: https://api.openai.com
+    key: ${OPENAI_API_KEY:}
+  model:
+    name: gpt-4o-mini
+    max-tokens: 4096
+
+# File Storage
+file:
+  upload-dir: ${FILE_UPLOAD_DIR:uploads}
+  base-url: ${FILE_BASE_URL:http://localhost:8080}
+  max-size: 5MB
+
+# Firebase (FCM Push)
+firebase:
+  credentials-path: ${FIREBASE_CREDENTIALS_PATH:classpath:firebase-service-account.json}
+
+# RabbitMQ
+spring.rabbitmq:
+  host: ${RABBITMQ_HOST:localhost}
+  port: ${RABBITMQ_PORT:5672}
+  username: ${RABBITMQ_USER:guest}
+  password: ${RABBITMQ_PASSWORD}

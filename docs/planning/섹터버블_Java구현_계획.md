@@ -109,7 +109,7 @@ public ResponseEntity<SectorBubbleResponse> getSectorBubbleDetail(
 ## 사용법
 ```bash
 # .env 파일에 Anthropic API 키 설정
-ANTHROPIC_API_KEY=sk-ant-xxx
+ANTHROPIC_API_KEY=<your-anthropic-api-key>
 
 # 전체 섹터 버블 AI 분석 생성
 python -m scripts.generate_sector_bubble_ai

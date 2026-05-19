@@ -8,13 +8,13 @@
 ### 환경변수 (.env)
 ```bash
 # Anthropic API (직접 호출 - 우선 사용)
-ANTHROPIC_API_KEY=sk-ant-xxx
+ANTHROPIC_API_KEY=<your-anthropic-api-key>
 
 # OpenAI API (직접 호출)
-OPENAI_API_KEY=sk-proj-xxx
+OPENAI_API_KEY=<your-openai-api-key>
 
 # SSAFY GMS (대체용 - API 키 없을 때)
-GMS_API_KEY=xxx
+GMS_API_KEY=<your-gms-api-key>
 GMS_API_URL=https://your-gms-endpoint.example.com
 ```
 
